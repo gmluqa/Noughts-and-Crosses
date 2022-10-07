@@ -27,7 +27,7 @@ body {
   height: 70vh;
   background-color: red;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
@@ -36,4 +36,19 @@ body {
   background-color: black;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
+}
+
+.row-player1 {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+.row-player2 {
+  grid-column: 4/5;
+  grid-row: 2/3;
+}
+
+#start-button {
+  grid-column: 3/4;
+  grid-row: 3/4;
 }
