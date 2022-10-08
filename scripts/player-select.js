@@ -9,16 +9,12 @@ playerSelectForm.addEventListener('submit', function (event) {
     let player2 = document.querySelector("input[name='player2']:checked").value
     let player2Name = document.getElementById("player2-name").value
 
-    const PlayerPayloadJsonify = (player1, player1Name, player2, player2Name) => [{ player: player1, playerName: player1Name }, { player: player2, playerName: player2Name }]
-    let activePlayersPayload = PlayerPayloadJsonify(player1, player1Name, player2, player2Name)
+    const PlayersPayloadJsonify = (player1, player1Name, player2, player2Name) => [{ player: player1, playerName: player1Name }, { player: player2, playerName: player2Name }]
+    let activePlayersPayload = PlayersPayloadJsonify(player1, player1Name, player2, player2Name)
     CheckEmptyNamesAndReplace(activePlayersPayload)
 
-    // sessionStorage.setItem("")
-
+    sessionStorage.setItem("activePlayersPayload", JSON.stringify(activePlayersPayload))
     console.log(activePlayersPayload)
-
-
-
 })
 
 
