@@ -1,7 +1,8 @@
-1. User clicks begin, object() is instantiated
-2. User selects players on radio, names them.
-3. Presses START button, which calls StartGame(player1, player1Name, player2, Player2Name)
-4. StartGame() calls player1Turn(), which asks player1's name to place a cross
+1. User clicks begin, whipes all session storage // sessionStorage.clear()
+2. On page load, new script runs, sessionStorage.clear() at start, all session storage is whiped, User selects players on radio, names them, 
+3. Presses START button, which passes params as a session JSON, page is redirected to game.html, if no name is given, by default both are named 'Player 1' and 'Player 2' respectively
+4. As game.html loads, new object is instatiated from TicTacToeGame as variable, calls startgame, again if no values are passed, they will default to 'Player 1' and 'Player 2 ' 
+ 
 
 // StartGame(player1, player1Name, player2, player2Name) => {
     player1 = player1
@@ -11,7 +12,7 @@
     Player1Turn()
     }
 
-    CheckIf3 => () // scans the array and sees if there are 3 of any piece
+    CheckIf3Pieces => () // scans the array and sees if there are 3 of any piece
     // if true, program runs CheckWinner() 
     // if false, do nothing
 
@@ -19,13 +20,14 @@
     // if true, winner is decided, program should end HERE
     // if false, run CheckIf6()
 
-    CheckIf6 => () // checks for 6 pieces on board, if true, RemovePiece() is called
+    CheckIf6Pieces => () // checks for 6 pieces on board, if true, RemovePiece() is called
 
     RemovePiece => () // prompts player to click square occupied with one of their pieces, it gets removed
 
-    PlacePiece => () // prompts player to click empty square, places one of their pieces
+    PlacePiece = () =>  // prompts player to click empty square, places one of their pieces, then runs CheckPiecePlacement()
 
 Player1Turn(){
+
     CheckIf3()
     PlacePiece()
     Player2Turn()
@@ -36,3 +38,6 @@ Player2Turn(){
     PlacePiece()
     Player1Turn()
 }
+
+
+

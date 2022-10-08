@@ -1,7 +1,34 @@
+let beginButton = document.getElementById("begin-button")
 
-let tet = document.getElementById("begin-button")
+beginButton.onclick = () => { sessionStorage.clear(), window.location.href = "../pages/player-select.html" }
 
-tet.onClick = () => alert('hel')
+
+
+
+// let bb = document.getElementById("begin-button")
+
+// bb.onclick = function () {
+//     let activeGame = new TicTacToeMatch()
+//     console.log(activeGame)
+//     activeGame.LogFunction()
+//     sessionStorage.setItem("activeGame", JSON.stringify(activeGame))
+//     console.log(sessionStorage.getItem("activeGame"))
+//     console.log(JSON.parse(sessionStorage.getItem("activeGame")))
+//     let activeGameSS = console.log(JSON.parse(sessionStorage.getItem("activeGame")))
+//     activeGameSS.LogFunction()
+// }
+
+// class TicTacToeMatch {
+//     constructor() {
+//         this.player1 = ""
+//         this.player2 = ""
+//         this.player1Name = ""
+//         this.player2Name = ""
+//         this.board = [["", "", ""], ["", "", ""], ["", "", ""]]
+//     }
+
+//     LogFunction = () => console.log('log success')
+// }
 
 
 // sets the session, save JSON string as session storage
@@ -10,12 +37,7 @@ tet.onClick = () => alert('hel')
 
 // console.log(sessionStorage.getItem("key"))
 
-class TicTacToeMatch {
-    constructor() {
-        this.player1 = "something"
-        this.player2 = "cpu"
-    }
-}
+
 
 // /* User clicks on START, let activeGame = new TicTacToeMatch(player1,player2) */
 
