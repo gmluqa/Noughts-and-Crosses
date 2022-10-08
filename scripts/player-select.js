@@ -15,6 +15,10 @@ playerSelectForm.addEventListener('submit', function (event) {
 
     sessionStorage.setItem("activePlayersPayload", JSON.stringify(activePlayersPayload))
     console.log(activePlayersPayload)
+
+
+
+    window.location.href = "./game.html"
 })
 
 

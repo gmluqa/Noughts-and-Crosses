@@ -1,3 +1,6 @@
+let p = sessionStorage.getItem("activePlayersPayload")
+p = JSON.parse(p)
+
 class TicTacToeMatch {
     constructor() {
         this.player1 = ""

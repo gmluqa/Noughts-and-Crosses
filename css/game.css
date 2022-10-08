@@ -1,0 +1,57 @@
+body {
+  margin: 0%;
+}
+
+.header {
+  height: 15vh;
+  background-color: blue;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.header-text {
+  grid-column: 2/3;
+  text-align: center;
+  align-self: center;
+  font-size: 200%;
+}
+
+.footer-text {
+  grid-column: 2/3;
+  text-align: center;
+  align-self: center;
+  font-size: 200%;
+}
+
+.main {
+  height: 70vh;
+  background-color: red;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.footer {
+  height: 15vh;
+  background-color: black;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.main-text {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  text-align: center;
+  align-self: center;
+  font-size: 200%;
+}
+
+.ttt-cell {
+  background-color: white;
+  color: black;
+  height: 100%;
+}
+
+.tttrow {
+  height: 33.33%;
+}
