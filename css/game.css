@@ -59,6 +59,8 @@ body {
   height: 33.33%;
 }
 
-.ttt-cell:hover {
-  background-color: aqua;
+@media (hover: hover) and (pointer: fine) {
+  .ttt-cell:hover {
+    background-color: aqua;
+  }
 }

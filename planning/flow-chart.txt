@@ -1,14 +1,10 @@
 1. User clicks begin, whipes all session storage // sessionStorage.clear()
 2. On page load, new script runs, sessionStorage.clear() at start, all session storage is whiped, User selects players on radio, names them, 
 3. Presses START button, which passes params as a session JSON, page is redirected to game.html, if no name is given, by default both are named 'Player 1' and 'Player 2' respectively
-4. As game.html loads, new object is instatiated from TicTacToeGame as variable, calls startgame, again if no values are passed, they will default to 'Player 1' and 'Player 2 ' 
+4. As game.html loads, new object is instatiated from TicTacToeGame as variable, calls StartGame()
  
 
-// StartGame(player1, player1Name, player2, player2Name) => {
-    player1 = player1
-    player1Name = player1Name
-    player2 = player2
-    player2Name = player2Name
+// StartGame() => {
     Player1Turn()
     }
 
