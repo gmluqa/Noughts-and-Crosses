@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Noughts & Crosses</title>
     <link rel="stylesheet" href="../css/player-select.css" />
+    <script src="../scripts/main.js"></script>
   </head>
   <body>
     <div class="header container">
@@ -35,7 +36,7 @@
               Human
             </label>
           </div>
-          <!-- player 2 radio -->
+
           <div class="form-check">
             <input
               class="form-check-input"
@@ -48,8 +49,15 @@
             </label>
           </div>
         </div>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Enter name of player 1"
+        />
       </div>
-
+      <!-- Player 2 radio starts -->
       <div class="row row-player2">
         <div class="col">
           Player 2
@@ -77,9 +85,20 @@
             </label>
           </div>
         </div>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Enter name of player 2"
+        />
       </div>
 
-      <button id="start-button" onclick="location.href = 'game.html';">
+      <button
+        id="start-button"
+        onclick="location.href = 'game.html';"
+        onClick="console.log('test')"
+      >
         START
       </button>
     </div>

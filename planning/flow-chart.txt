@@ -1,0 +1,42 @@
+1. User clicks begin, object() is instantiated
+2. User selects players on radio, names them.
+3. Presses START button, which calls StartGame(player1, player1Name, player2, Player2Name)
+4. StartGame() calls player1Turn(), which asks player1's name to place a cross
+
+
+
+
+
+// StartGame(player1, player1Name, player2, player2Name) => {
+    player1 = player1
+    player1Name = player1Name
+    player2 = player2
+    player2Name = player2Name
+    Player1Turn()
+    }
+
+    CheckIf3() => // scans the array and sees if there are 3 of any piece
+    // if true, program runs CheckWinner() 
+    // if false, do nothing
+
+    //CheckWinner() => // checks to see if any 3 pieces make a line
+    // if true, winner is decided, program should end HERE
+    // if false, run CheckIf6()
+
+    CheckIf6() => // checks for 6 pieces on board, if true, RemovePiece() is called
+
+    RemovePiece() => // prompts player to click square occupied with one of their pieces, it gets removed
+
+    PlacePiece() => // prompts player to click empty square, places one of their pieces
+
+Player1Turn(){
+    CheckIf3()
+    PlacePiece()
+    Player2Turn()
+}
+
+Player2Turn(){
+    CheckIf3()
+    PlacePiece()
+    Player1Turn()
+}
