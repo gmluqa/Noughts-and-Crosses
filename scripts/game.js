@@ -12,32 +12,55 @@ class TicTacToeMatch {
         this.player2 = player2
         this.player1Name = player1Name
         this.player2Name = player2Name
-        this.board = [["", "", ""], ["", "", ""], ["", "", ""]]
+        this.board = [["x", "x", "x"], ["x", "o", "o"], ["o", "o", "o"]]
         this.turn = 0
         this.activePlayer = ""
         this.action = ""
+        this.xCount = 0
+        this.oCount = 0
+    }
+
+    StartGame = () => {
+        this.turn++
+        this.Player1Turn
     }
 
     Player1Turn = () => {
-        this.turn++
+        console.log(this.turn)
+        this.CheckIf3(1)
         this.activePlayer = this.player1Name
-        CheckIf3()
-        PlacePiece()
-        Player2Turn()
+        console.log(this.activePlayer)
+        // PlacePiece()
+        // Player2Turn()
 
     }
 
-    CheckIf3Pieces = () => {
-
-        // if there are 3 of any same piece ? check for 6 total : 
-    } // scans the array and sees if there are 3 of any piece
-    // if true, program runs CheckWinner() 
-    // if false, do nothing
+    CheckIf3 = playerNumber => {
+        this.xCount = 0;
+        this.oCount = 0;
+        for (let i = 0; i < activeGame.board.length; i++) {
+            for (let j = 0; j < activeGame.board[i].length; j++) {
+                if (activeGame.board[i][j] == "x") { this.xCount++ }
+                if (activeGame.board[i][j] == "o") { this.oCount++ }
+            }
+        }
+        if (playerNumber == 1 && this.xCount > 2) {
+            console.log('player 1 has > 2 x')
+            this.action = "remove"
+            return true;
+        }
+        if (playerNumber == 2 && this.oCount > 2) {
+            console.log('player 2 has > 2 o')
+            this.action = "remove"
+            return true;
+        }
+        console.log(xCount)
+        console.log(oCount)
+    }
 
     Player2Turn = () => {
-        this.turn++
+        CheckIf3(2)
         this.activePlayer = this.player2Name
-        CheckIf3()
         PlacePiece()
         Player1Turn()
 
@@ -80,12 +103,7 @@ const player2Name = playersSessionObject[1].playerName
 
 let activeGame = new TicTacToeMatch(player1, player2, player1Name, player2Name)
 
+activeGame.StartGame()
 
 
-
-for (let i = 0; i < activeGame.board.length; i++) {
-    for (let j = 0; j < 3; j++) {
-        console.log(`cell ${i}${j} `)
-    }
-}
 

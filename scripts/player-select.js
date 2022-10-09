@@ -21,6 +21,7 @@ playerSelectForm.addEventListener('submit', function (event) {
     window.location.href = "./game.html"
 })
 
+// This function asigns player 1 and player 2 as default names
 
 const CheckEmptyNamesAndReplace = (activePlayersPayload) => {
     for (let i = 0; i < activePlayersPayload.length; i++) {

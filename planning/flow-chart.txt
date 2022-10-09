@@ -35,3 +35,34 @@ Player2Turn(){
 
 
 
+at first hard code this, as a git branch, will try refactor it into a loop for each button
+
+cell 00 onClick = 
+    switch (action)
+
+    case place
+        if (cell == ""){
+            if (turn is odd) {fill array pos with x and fill html element
+            this.turn++
+            player2Turn() 
+            }
+            else if (turn is even) {fill array pos with o and fill html element
+            this.turn++
+            player1Turn() 
+            }
+        } else {
+            console.log("invalid move")
+        }
+    case remove
+        if (turn is odd && cell == "x"){
+            make element in array = "", make html document have no content in tag
+            this.action = place
+        }
+        else if (turn is even && cell == "o"){
+            make element in array = "", make html document have no content in tag
+            this.action = place
+        }
+        else console.log('invalid move')
+
+
+
