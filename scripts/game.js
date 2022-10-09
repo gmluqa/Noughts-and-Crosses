@@ -13,7 +13,7 @@ class TicTacToeMatch {
         this.player2 = player2
         this.player1Name = player1Name
         this.player2Name = player2Name
-        this.board = [["", "x", "o"], ["", "", ""], ["", "", ""]]
+        this.board = [["", "", ""], ["", "", ""], ["", "", ""]]
         this.turn = 0
         this.activePlayer = ""
         this.action = ""
@@ -27,8 +27,11 @@ class TicTacToeMatch {
     }
 
     Player1Turn = () => {
+        console.log('it is turn ' + this.turn)
         this.CheckIf3(1)
         this.activePlayer = this.player1Name
+        console.log('turn:' + this.activePlayer)
+        console.log('current action is ' + this.action)
         // PlacePiece()
         // Player2Turn()
 
@@ -64,26 +67,45 @@ class TicTacToeMatch {
     }
 
     Player2Turn = () => {
+        console.log('it is turn ' + this.turn)
         this.CheckIf3(2)
         this.activePlayer = this.player2Name
+        console.log('turn:' + this.activePlayer)
+        console.log('current action is ' + this.action)
 
 
     }
 
     isEven = num => num % 2 === 0;
 
-    PlayerMove = (cell) => {
+    PlayerMove = cell => {
         switch (activeGame.action) {
             case 'place':
-                if (!activeGame.isEven(activeGame.turn)) {
-                    activeGame.board[cell[0]][cell[1]] = "x"
-                    document.getElementById("ttt-cell-00").innerHTML = ("test")
-                    this.turn++
-                    activeGame.Player2Turn()
+                if (this.EmptyCheck(cell) == 'empty') {
+                    if (!activeGame.isEven(activeGame.turn)) {
+                        activeGame.board[cell[0]][cell[1]] = "x"
+                        document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("x")
+                        this.turn++
+                        activeGame.Player2Turn()
+
+                    } else if (activeGame.isEven(activeGame.turn)) {
+                        activeGame.board[cell[0]][cell[1]] = "o"
+                        document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("o")
+                        this.turn++
+                        activeGame.Player1Turn()
+                    }
                 }
+                break;
         }
     }
 
+    EmptyCheck = (cell) => {
+        if (activeGame.board[cell[0]][cell[1]] == "") {
+            return "empty"
+        }
+        else return "occupied"
+
+    }
 
 
 
