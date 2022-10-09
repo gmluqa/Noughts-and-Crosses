@@ -2,6 +2,7 @@
 
 let playersSessionObject = JSON.parse(sessionStorage.getItem("activePlayersPayload"))
 
+
 // DEFINING CLASS THAT WILL BE ABLE TO UTILIZE THE JSON AS INPUT PARAMS
 
 // example {player: 'cpu', playerName: 'Player 1'}, {player: 'cpu', playerName: 'Player 2'} 
@@ -12,7 +13,7 @@ class TicTacToeMatch {
         this.player2 = player2
         this.player1Name = player1Name
         this.player2Name = player2Name
-        this.board = [["", "", ""], ["", "", ""], ["", "", ""]]
+        this.board = [["", "x", "o"], ["", "", ""], ["", "", ""]]
         this.turn = 0
         this.activePlayer = ""
         this.action = ""
@@ -104,29 +105,57 @@ let cell22 = document.getElementById("ttt-cell-22")
 
 console.log(` action is ${activeGame.action}`)
 console.log(activeGame.turn)
-cell00.onclick = () => {
-    switch (activeGame.action) {
-        case "place":
-            if (!isEven(activeGame.turn)) {
-                activeGame.board[0][0] = "x"
-                console.log(activeGame.board[0][0])
-                this.turn++
-                activeGame.Player2Turn()
-            }
 
-            break;
 
-        default:
-            break;
-    }
+
+cell00.onclick = () => { PlayerMove([0, 0]) }
+cell01.onclick = () => { PlayerMove([0, 1]) }
+cell02.onclick = () => { PlayerMove([0, 2]) }
+cell10.onclick = () => { PlayerMove([1, 0]) }
+cell11.onclick = () => { PlayerMove([1, 1]) }
+cell12.onclick = () => { PlayerMove([1, 2]) }
+cell20.onclick = () => { PlayerMove([2, 0]) }
+cell21.onclick = () => { PlayerMove([2, 1]) }
+cell22.onclick = () => { PlayerMove([2, 2]) }
+
+PlayerMove = (cell) => {
+
+    console.log(activeGame.board[cell[0]][cell[1]])
 }
-cell01.onclick = () => { /* ActivePlayer(), DoAction(action) */ }
-cell02.onclick = () => { /* ActivePlayer(), DoAction(action) */ }
-cell10.onclick = () => { /* ActivePlayer(), DoAction(action) */ }
-cell11.onclick = () => { /* ActivePlayer(), DoAction(action) */ }
-cell12.onclick = () => { /* ActivePlayer(), DoAction(action) */ }
-cell20.onclick = () => { /* ActivePlayer(), DoAction(action) */ }
-cell21.onclick = () => { /* ActivePlayer(), DoAction(action) */ }
-cell22.onclick = () => { /* ActivePlayer(), DoAction(action) */ }
+
+
+// cell00.onclick = () => {
+//     switch (activeGame.action) {
+//         case "place":
+//             if (!isEven(activeGame.turn)) {
+//                 activeGame.board[0][0] = "x"
+//                 console.log(activeGame.board[0][0])
+//                 this.turn++
+//                 activeGame.Player2Turn()
+//             }
+//             break;
+//         case "remove":
+
+//             switch (activeGame.turn) {
+//                 case value:
+
+//                     break;
+
+//                 default:
+//                     break;
+//             }
+
+
+//             if (activeGame.board[0][0] = "x" || activeGame.board[0][0] == "o") {
+
+//             }
+
+//         default:
+//             break;
+//     }
+// }
+
+
+
 
 const isEven = num => num % 2 === 0;
