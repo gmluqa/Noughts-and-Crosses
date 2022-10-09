@@ -4,9 +4,7 @@
 4. As game.html loads, new object is instatiated from TicTacToeGame as variable, calls StartGame()
  
 
-// StartGame() => {
-    Player1Turn()
-    }
+
 
     CheckIf3Pieces => () // scans the array and sees if there are 3 of any piece
     // if true, program runs CheckWinner() 
