@@ -29,7 +29,6 @@ class TicTacToeMatch {
     Player1Turn = () => {
         this.CheckIf3(1)
         this.activePlayer = this.player1Name
-        console.log(this.activePlayer)
         // PlacePiece()
         // Player2Turn()
 
@@ -56,8 +55,7 @@ class TicTacToeMatch {
             this.CheckWinner(playerNumber)
             this.action = "remove"
         }
-        console.log(this.xCount)
-        console.log(this.oCount)
+
     }
 
     CheckWinner = (playerNumber) => {
@@ -68,8 +66,22 @@ class TicTacToeMatch {
     Player2Turn = () => {
         this.CheckIf3(2)
         this.activePlayer = this.player2Name
-        console.log(this.activePlayer)
 
+
+    }
+
+    isEven = num => num % 2 === 0;
+
+    PlayerMove = (cell) => {
+        switch (activeGame.action) {
+            case 'place':
+                if (!activeGame.isEven(activeGame.turn)) {
+                    activeGame.board[cell[0]][cell[1]] = "x"
+                    document.getElementById("ttt-cell-00").innerHTML = ("test")
+                    this.turn++
+                    activeGame.Player2Turn()
+                }
+        }
     }
 
 
@@ -103,25 +115,15 @@ let cell20 = document.getElementById("ttt-cell-20")
 let cell21 = document.getElementById("ttt-cell-21")
 let cell22 = document.getElementById("ttt-cell-22")
 
-console.log(` action is ${activeGame.action}`)
-console.log(activeGame.turn)
-
-
-
-cell00.onclick = () => { PlayerMove([0, 0]) }
-cell01.onclick = () => { PlayerMove([0, 1]) }
-cell02.onclick = () => { PlayerMove([0, 2]) }
-cell10.onclick = () => { PlayerMove([1, 0]) }
-cell11.onclick = () => { PlayerMove([1, 1]) }
-cell12.onclick = () => { PlayerMove([1, 2]) }
-cell20.onclick = () => { PlayerMove([2, 0]) }
-cell21.onclick = () => { PlayerMove([2, 1]) }
-cell22.onclick = () => { PlayerMove([2, 2]) }
-
-PlayerMove = (cell) => {
-
-    console.log(activeGame.board[cell[0]][cell[1]])
-}
+cell00.onclick = () => { activeGame.PlayerMove([0, 0]) }
+cell01.onclick = () => { activeGame.PlayerMove([0, 1]) }
+cell02.onclick = () => { activeGame.PlayerMove([0, 2]) }
+cell10.onclick = () => { activeGame.PlayerMove([1, 0]) }
+cell11.onclick = () => { activeGame.PlayerMove([1, 1]) }
+cell12.onclick = () => { activeGame.PlayerMove([1, 2]) }
+cell20.onclick = () => { activeGame.PlayerMove([2, 0]) }
+cell21.onclick = () => { activeGame.PlayerMove([2, 1]) }
+cell22.onclick = () => { activeGame.PlayerMove([2, 2]) }
 
 
 // cell00.onclick = () => {
@@ -155,7 +157,3 @@ PlayerMove = (cell) => {
 //     }
 // }
 
-
-
-
-const isEven = num => num % 2 === 0;
