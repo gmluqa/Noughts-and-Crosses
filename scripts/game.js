@@ -40,10 +40,10 @@ class TicTacToeMatch {
     CheckIf3 = playerNumber => {
         this.xCount = 0;
         this.oCount = 0;
-        for (let i = 0; i < activeGame.board.length; i++) {
-            for (let j = 0; j < activeGame.board[i].length; j++) {
-                if (activeGame.board[i][j] == "x") { this.xCount++ }
-                if (activeGame.board[i][j] == "o") { this.oCount++ }
+        for (let i = 0; i < this.board.length; i++) {
+            for (let j = 0; j < this.board[i].length; j++) {
+                if (this.board[i][j] == "x") { this.xCount++ }
+                if (this.board[i][j] == "o") { this.oCount++ }
             }
         }
         if (playerNumber == 1 && this.xCount > 2) {
@@ -53,7 +53,7 @@ class TicTacToeMatch {
         } else if (playerNumber == 1) {
             return this.action = "place"
         }
-        if (playerNumber == 2 && this.oCount > 2) {
+        else if (playerNumber == 2 && this.oCount > 2) {
             console.log('player 2 has > 2 o')
             this.CheckWinner(playerNumber)
             this.action = "remove"
@@ -79,49 +79,58 @@ class TicTacToeMatch {
     isEven = num => num % 2 === 0;
 
     PlayerMove = cell => {
-        switch (activeGame.action) {
+        switch (this.action) {
             case 'place':
                 if (this.EmptyCheck(cell) == 'empty') {
-                    if (!activeGame.isEven(activeGame.turn)) {
-                        activeGame.board[cell[0]][cell[1]] = "x"
+                    if (!this.isEven(this.turn)) {
+                        this.board[cell[0]][cell[1]] = "x"
                         document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("x")
                         console.log('x placed')
                         this.turn++
-                        activeGame.Player2Turn()
+                        this.Player2Turn()
 
-                    } else if (activeGame.isEven(activeGame.turn)) {
-                        activeGame.board[cell[0]][cell[1]] = "o"
+                    } else if (this.isEven(this.turn)) {
+                        this.board[cell[0]][cell[1]] = "o"
                         document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("o")
                         console.log('o placed')
                         this.turn++
-                        activeGame.Player1Turn()
+                        this.Player1Turn()
                     }
                 }
                 break;
             case 'remove':
                 if (this.EmptyCheck(cell) == 'occupied') {
-                    if (!activeGame.isEven(activeGame.turn)) {
-                        activeGame.board[cell[0]][cell[1]] = ""
-                        document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("")
-                        this.action = 'place'
-                        console.log('player 1 to place')
+                    console.log(`is odd? ${!this.isEven(this.turn)}`)
+                    console.log(this.board[cell[0]][cell[1]])
+                    if (!this.isEven(this.turn) && this.board[cell[0]][cell[1]] == "x") {
+                        if (this.board[cell[0]][cell[1]] == "x") {
+                            this.board[cell[0]][cell[1]] = ""
+                            document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("")
+                            this.action = 'place'
+                            console.log('player 1 to place')
+                        }
 
-                    } else if (activeGame.isEven(activeGame.turn)) {
-                        activeGame.board[cell[0]][cell[1]] = ""
-                        document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("")
-                        this.action = 'place'
-                        console.log('player 2 to place')
+                    } else if (this.isEven(this.turn)) {
+
+                        console.log(this.isEven(`is even? ${this.turn}`))
+                        console.log(this.board[cell[0][cell[1]]])
+                        if (this.board[cell[0]][cell[1]] == "o") {
+                            this.board[cell[0]][cell[1]] = ""
+                            document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("")
+                            this.action = 'place'
+                            console.log('player 2 to place')
+                        }
                     }
                 }
         }
     }
 
     EmptyCheck = (cell) => {
-        if (activeGame.board[cell[0]][cell[1]] == "") {
+        if (this.board[cell[0]][cell[1]] == "") {
             console.log('space is empty')
             return "empty"
         }
-        else if (activeGame.board[cell[0]][cell[1]] == "o" || activeGame.board[cell[0]][cell[1]] == "x") {
+        else if (this.board[cell[0]][cell[1]] == "o" || this.board[cell[0]][cell[1]] == "x") {
             console.log('space is occupied')
             return "occupied"
         }
