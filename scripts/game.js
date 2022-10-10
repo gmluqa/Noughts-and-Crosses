@@ -65,11 +65,23 @@ class TicTacToeMatch {
                 (this.board[0][2] + this.board[1][2] + this.board[2][2] === "xxx") ||
                 (this.board[0][0] + this.board[1][1] + this.board[2][2] === "xxx") ||
                 (this.board[2][0] + this.board[1][1] + this.board[0][2] === "xxx")) {
+                sessionStorage.setItem("winner", this.player1Name)
+                window.location.href = "./winner-screen.html"
             }
         }
-        // count x
-        else if (playerNum == 2) { console.log('player 2 being checked') }
-        // count o
+        else if (playerNum == 2) {
+            if ((this.board[0][0] + this.board[0][1] + this.board[0][2] === "ooo") ||
+                (this.board[1][0] + this.board[1][1] + this.board[1][2] === "ooo") ||
+                (this.board[2][0] + this.board[2][1] + this.board[2][2] === "ooo") ||
+                (this.board[0][0] + this.board[1][0] + this.board[2][0] === "ooo") ||
+                (this.board[0][1] + this.board[1][1] + this.board[2][1] === "ooo") ||
+                (this.board[0][2] + this.board[1][2] + this.board[2][2] === "ooo") ||
+                (this.board[0][0] + this.board[1][1] + this.board[2][2] === "ooo") ||
+                (this.board[2][0] + this.board[1][1] + this.board[0][2] === "ooo")) {
+                sessionStorage.setItem("winner", this.player2Name)
+                window.location.href = "./winner-screen.html"
+            }
+        }
     }
 
     Player2Turn = () => {
