@@ -26,11 +26,11 @@ class TicTacToeMatch {
     }
 
     Player1Turn = () => {
-        console.log('it is turn ' + this.turn)
+
         this.CheckIf3(1)
+        this.CheckWinner(2)
         this.activePlayer = this.player1Name
-        console.log('turn:' + this.activePlayer)
-        console.log('current action is ' + this.action)
+
 
 
     }
@@ -45,31 +45,39 @@ class TicTacToeMatch {
             }
         }
         if (playerNumber == 1 && this.xCount > 2) {
-            console.log('checking winner...')
-            this.CheckWinner(playerNumber)
             this.action = "remove"
         } else if (playerNumber == 1) {
             return this.action = "place"
         }
         else if (playerNumber == 2 && this.oCount > 2) {
-            console.log('checking winner...')
-            this.CheckWinner(playerNumber)
             this.action = "remove"
         }
 
     }
 
-    CheckWinner = (playerNumber) => {
-        // winning array combos: 00, 01, 02;
-
+    CheckWinner = (playerNum) => {
+        if (playerNum == 1) {
+            if ((this.board[0][0] + this.board[0][1] + this.board[0][2] === "xxx") ||
+                (this.board[1][0] + this.board[1][1] + this.board[1][2] === "xxx") ||
+                (this.board[2][0] + this.board[2][1] + this.board[2][2] === "xxx") ||
+                (this.board[0][0] + this.board[1][0] + this.board[2][0] === "xxx") ||
+                (this.board[0][1] + this.board[1][1] + this.board[2][1] === "xxx") ||
+                (this.board[0][2] + this.board[1][2] + this.board[2][2] === "xxx") ||
+                (this.board[0][0] + this.board[1][1] + this.board[2][2] === "xxx") ||
+                (this.board[2][0] + this.board[1][1] + this.board[0][2] === "xxx")) {
+            }
+        }
+        // count x
+        else if (playerNum == 2) { console.log('player 2 being checked') }
+        // count o
     }
 
     Player2Turn = () => {
-        console.log('it is turn ' + this.turn)
+
         this.CheckIf3(2)
+        this.CheckWinner(1)
         this.activePlayer = this.player2Name
-        console.log('turn:' + this.activePlayer)
-        console.log('current action is ' + this.action)
+
 
 
     }
@@ -81,26 +89,24 @@ class TicTacToeMatch {
             case 'place':
                 if (this.EmptyCheck(cell) == 'empty') {
                     if (!this.isEven(this.turn)) {
-                        console.log(cell)
-                        console.log(this.replacingCell)
+
                         if (cell.toString() == this.replacingCell.toString()) {
                             return null;
                         }
                         this.board[cell[0]][cell[1]] = "x"
                         document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("x")
-                        console.log('x placed')
+
                         this.turn++
                         this.Player2Turn()
 
                     } else if (this.isEven(this.turn)) {
-                        console.log(cell)
-                        console.log(this.replacingCell)
+
                         if (cell.toString() == this.replacingCell.toString()) {
                             return null;
                         }
                         this.board[cell[0]][cell[1]] = "o"
                         document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("o")
-                        console.log('o placed')
+
                         this.turn++
                         this.Player1Turn()
                     }
@@ -108,8 +114,7 @@ class TicTacToeMatch {
                 break;
             case 'remove':
                 if (this.EmptyCheck(cell) == 'occupied') {
-                    console.log(`is odd? ${!this.isEven(this.turn)}`)
-                    console.log(this.board[cell[0]][cell[1]])
+
                     if (!this.isEven(this.turn) && this.board[cell[0]][cell[1]] == "x") {
                         if (this.board[cell[0]][cell[1]] == "x") {
                             this.board[cell[0]][cell[1]] = ""
@@ -120,8 +125,7 @@ class TicTacToeMatch {
 
                     } else if (this.isEven(this.turn)) {
 
-                        console.log(this.isEven(`is even? ${this.turn}`))
-                        console.log(this.board[cell[0][cell[1]]])
+
                         if (this.board[cell[0]][cell[1]] == "o") {
                             this.board[cell[0]][cell[1]] = ""
                             document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("")
@@ -136,11 +140,11 @@ class TicTacToeMatch {
 
     EmptyCheck = (cell) => {
         if (this.board[cell[0]][cell[1]] == "") {
-            console.log('space is empty')
+
             return "empty"
         }
         else if (this.board[cell[0]][cell[1]] == "o" || this.board[cell[0]][cell[1]] == "x") {
-            console.log('space is occupied')
+
             return "occupied"
         }
 
@@ -188,34 +192,4 @@ cell21.onclick = () => { activeGame.PlayerMove([2, 1]) }
 cell22.onclick = () => { activeGame.PlayerMove([2, 2]) }
 
 
-// cell00.onclick = () => {
-//     switch (activeGame.action) {
-//         case "place":
-//             if (!isEven(activeGame.turn)) {
-//                 activeGame.board[0][0] = "x"
-//                 console.log(activeGame.board[0][0])
-//                 this.turn++
-//                 activeGame.Player2Turn()
-//             }
-//             break;
-//         case "remove":
-
-//             switch (activeGame.turn) {
-//                 case value:
-
-//                     break;
-
-//                 default:
-//                     break;
-//             }
-
-
-//             if (activeGame.board[0][0] = "x" || activeGame.board[0][0] == "o") {
-
-//             }
-
-//         default:
-//             break;
-//     }
-// }
 
