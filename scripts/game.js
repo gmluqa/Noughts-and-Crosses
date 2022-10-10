@@ -1,5 +1,3 @@
-// PARSE THE SESSIONSTORAGE STRING INTO JSON
-
 let playersSessionObject = JSON.parse(sessionStorage.getItem("activePlayersPayload"))
 
 
@@ -19,6 +17,7 @@ class TicTacToeMatch {
         this.action = ""
         this.xCount = 0
         this.oCount = 0
+        this.replacingCell = []
     }
 
     StartGame = () => {
@@ -32,8 +31,7 @@ class TicTacToeMatch {
         this.activePlayer = this.player1Name
         console.log('turn:' + this.activePlayer)
         console.log('current action is ' + this.action)
-        // PlacePiece()
-        // Player2Turn()
+
 
     }
 
@@ -47,14 +45,14 @@ class TicTacToeMatch {
             }
         }
         if (playerNumber == 1 && this.xCount > 2) {
-            console.log('player 1 has > 2 x')
+            console.log('checking winner...')
             this.CheckWinner(playerNumber)
             this.action = "remove"
         } else if (playerNumber == 1) {
             return this.action = "place"
         }
         else if (playerNumber == 2 && this.oCount > 2) {
-            console.log('player 2 has > 2 o')
+            console.log('checking winner...')
             this.CheckWinner(playerNumber)
             this.action = "remove"
         }
@@ -62,7 +60,7 @@ class TicTacToeMatch {
     }
 
     CheckWinner = (playerNumber) => {
-        console.log(`checking if ${playerNumber} has won`)
+        // winning array combos: 00, 01, 02;
 
     }
 
@@ -83,6 +81,11 @@ class TicTacToeMatch {
             case 'place':
                 if (this.EmptyCheck(cell) == 'empty') {
                     if (!this.isEven(this.turn)) {
+                        console.log(cell)
+                        console.log(this.replacingCell)
+                        if (cell.toString() == this.replacingCell.toString()) {
+                            return null;
+                        }
                         this.board[cell[0]][cell[1]] = "x"
                         document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("x")
                         console.log('x placed')
@@ -90,6 +93,11 @@ class TicTacToeMatch {
                         this.Player2Turn()
 
                     } else if (this.isEven(this.turn)) {
+                        console.log(cell)
+                        console.log(this.replacingCell)
+                        if (cell.toString() == this.replacingCell.toString()) {
+                            return null;
+                        }
                         this.board[cell[0]][cell[1]] = "o"
                         document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("o")
                         console.log('o placed')
@@ -106,8 +114,8 @@ class TicTacToeMatch {
                         if (this.board[cell[0]][cell[1]] == "x") {
                             this.board[cell[0]][cell[1]] = ""
                             document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("")
+                            this.replacingCell = cell;
                             this.action = 'place'
-                            console.log('player 1 to place')
                         }
 
                     } else if (this.isEven(this.turn)) {
@@ -117,8 +125,9 @@ class TicTacToeMatch {
                         if (this.board[cell[0]][cell[1]] == "o") {
                             this.board[cell[0]][cell[1]] = ""
                             document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("")
+                            this.replacingCell = cell;
                             this.action = 'place'
-                            console.log('player 2 to place')
+
                         }
                     }
                 }
