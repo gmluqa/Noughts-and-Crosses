@@ -85,25 +85,47 @@ class TicTacToeMatch {
                     if (!activeGame.isEven(activeGame.turn)) {
                         activeGame.board[cell[0]][cell[1]] = "x"
                         document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("x")
+                        console.log('x placed')
                         this.turn++
                         activeGame.Player2Turn()
 
                     } else if (activeGame.isEven(activeGame.turn)) {
                         activeGame.board[cell[0]][cell[1]] = "o"
                         document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("o")
+                        console.log('o placed')
                         this.turn++
                         activeGame.Player1Turn()
                     }
                 }
                 break;
+            case 'remove':
+                if (this.EmptyCheck(cell) == 'occupied') {
+                    if (!activeGame.isEven(activeGame.turn)) {
+                        activeGame.board[cell[0]][cell[1]] = ""
+                        document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("")
+                        this.action = 'place'
+                        console.log('player 1 to place')
+
+                    } else if (activeGame.isEven(activeGame.turn)) {
+                        activeGame.board[cell[0]][cell[1]] = ""
+                        document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("")
+                        this.action = 'place'
+                        console.log('player 2 to place')
+                    }
+                }
         }
     }
 
     EmptyCheck = (cell) => {
         if (activeGame.board[cell[0]][cell[1]] == "") {
+            console.log('space is empty')
             return "empty"
         }
-        else return "occupied"
+        else if (activeGame.board[cell[0]][cell[1]] == "o" || activeGame.board[cell[0]][cell[1]] == "x") {
+            console.log('space is occupied')
+            return "occupied"
+        }
+
 
     }
 
