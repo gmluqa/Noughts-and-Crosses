@@ -159,15 +159,8 @@ class TicTacToeMatch {
 
             return "occupied"
         }
-
-
     }
-
-
-
-
 }
-
 
 // ASIGNING PLAYER VARS, INITIATE NEW GAME WITH THOSE VARS
 
