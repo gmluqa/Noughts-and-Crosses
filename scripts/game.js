@@ -31,6 +31,12 @@ class TicTacToeMatch {
         this.CheckWinner(2)
         this.displayCurrentTurn(this.turn)
         this.activePlayer = this.player1Name
+        if (this.turn == 1) {
+            this.currentAction = 'place'
+        }
+        console.log(this.activePlayer)
+        console.log(this.currentAction)
+        this.displayCurrentPlayerAction(this.activePlayer, this.currentAction)
     }
 
     CheckIf3 = playerNumber => {
@@ -86,11 +92,19 @@ class TicTacToeMatch {
         this.CheckWinner(1)
         this.displayCurrentTurn(this.turn)
         this.activePlayer = this.player2Name
+        this.displayCurrentPlayerAction(this.activePlayer, this.currentAction)
     }
     isEven = num => num % 2 === 0;
 
     displayCurrentTurn = turnNum => {
         document.getElementById("turn-counter").innerHTML = `It is turn ${turnNum}`
+    }
+
+    displayCurrentPlayerAction = (currentPlayer, currentAction) => {
+        if (currentAction == 'remove') {
+            document.getElementById("active-player-do").innerHTML = `${currentPlayer}, ${currentAction} a piece, then place it in another new empty position`
+        }
+        document.getElementById("active-player-do").innerHTML = `${currentPlayer}, ${currentAction} a piece`
     }
 
     PlayerMove = cell => {
