@@ -23,16 +23,14 @@ class TicTacToeMatch {
     StartGame = () => {
         this.turn++
         this.Player1Turn()
+        this.displayCurrentTurn(this.turn)
     }
 
     Player1Turn = () => {
-
         this.CheckIf3(1)
         this.CheckWinner(2)
+        this.displayCurrentTurn(this.turn)
         this.activePlayer = this.player1Name
-
-
-
     }
 
     CheckIf3 = playerNumber => {
@@ -52,7 +50,6 @@ class TicTacToeMatch {
         else if (playerNumber == 2 && this.oCount > 2) {
             this.action = "remove"
         }
-
     }
 
     CheckWinner = (playerNum) => {
@@ -85,40 +82,35 @@ class TicTacToeMatch {
     }
 
     Player2Turn = () => {
-
         this.CheckIf3(2)
         this.CheckWinner(1)
+        this.displayCurrentTurn(this.turn)
         this.activePlayer = this.player2Name
-
-
-
     }
-
     isEven = num => num % 2 === 0;
+
+    displayCurrentTurn = turnNum => {
+        document.getElementById("turn-counter").innerHTML = `It is turn ${turnNum}`
+    }
 
     PlayerMove = cell => {
         switch (this.action) {
             case 'place':
                 if (this.EmptyCheck(cell) == 'empty') {
                     if (!this.isEven(this.turn)) {
-
                         if (cell.toString() == this.replacingCell.toString()) {
                             return null;
                         }
                         this.board[cell[0]][cell[1]] = "x"
                         document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("x")
-
                         this.turn++
                         this.Player2Turn()
-
                     } else if (this.isEven(this.turn)) {
-
                         if (cell.toString() == this.replacingCell.toString()) {
                             return null;
                         }
                         this.board[cell[0]][cell[1]] = "o"
                         document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("o")
-
                         this.turn++
                         this.Player1Turn()
                     }
@@ -126,7 +118,6 @@ class TicTacToeMatch {
                 break;
             case 'remove':
                 if (this.EmptyCheck(cell) == 'occupied') {
-
                     if (!this.isEven(this.turn) && this.board[cell[0]][cell[1]] == "x") {
                         if (this.board[cell[0]][cell[1]] == "x") {
                             this.board[cell[0]][cell[1]] = ""
@@ -134,16 +125,12 @@ class TicTacToeMatch {
                             this.replacingCell = cell;
                             this.action = 'place'
                         }
-
                     } else if (this.isEven(this.turn)) {
-
-
                         if (this.board[cell[0]][cell[1]] == "o") {
                             this.board[cell[0]][cell[1]] = ""
                             document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("")
                             this.replacingCell = cell;
                             this.action = 'place'
-
                         }
                     }
                 }
@@ -152,11 +139,9 @@ class TicTacToeMatch {
 
     EmptyCheck = (cell) => {
         if (this.board[cell[0]][cell[1]] == "") {
-
             return "empty"
         }
         else if (this.board[cell[0]][cell[1]] == "o" || this.board[cell[0]][cell[1]] == "x") {
-
             return "occupied"
         }
     }
@@ -172,7 +157,6 @@ const player2Name = playersSessionObject[1].playerName
 let activeGame = new TicTacToeMatch(player1, player2, player1Name, player2Name)
 
 activeGame.StartGame()
-
 
 // CELL CONTROLLING BUTTONS
 
@@ -195,6 +179,3 @@ cell12.onclick = () => { activeGame.PlayerMove([1, 2]) }
 cell20.onclick = () => { activeGame.PlayerMove([2, 0]) }
 cell21.onclick = () => { activeGame.PlayerMove([2, 1]) }
 cell22.onclick = () => { activeGame.PlayerMove([2, 2]) }
-
-
-
