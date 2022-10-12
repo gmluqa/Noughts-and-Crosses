@@ -27,6 +27,7 @@ class TicTacToeMatch {
     }
 
     Player1Turn = () => {
+        console.log('player 1 turn')
         this.CheckIf3(1)
         this.CheckWinner(2)
         this.displayCurrentTurn(this.turn)
@@ -34,6 +35,7 @@ class TicTacToeMatch {
         if (this.turn == 1) {
             this.currentAction = 'place'
         }
+        this.ifCpuMove(1)
         console.log(this.activePlayer)
         console.log(this.currentAction)
     }
@@ -90,8 +92,92 @@ class TicTacToeMatch {
         this.CheckIf3(2)
         this.CheckWinner(1)
         this.displayCurrentTurn(this.turn)
+        console.log('PLAYER 2 TURN')
         this.activePlayer = this.player2Name
+        console.log(this.activePlayer + "!!!111")
+        this.ifCpuMove(2)
     }
+
+    ifCpuMove = (playerNum) => {
+        switch (playerNum) {
+            case 1:
+                if (this.isEven(this.turn)) {
+                    if (this.player1 == "cpu") {
+                        if (this.action == 'remove') {
+                            this.cpuRemove("x")
+                        }
+                        this.cpuPlace("x")
+                        CheckWinner(1)
+                        this.Player2Turn()
+                    }
+                    break;
+                }
+            case 2:
+                if (this.isEven(this.turn)) {
+                    console.log('turn is even!')
+                    if (this.player2 == "cpu") {
+                        console.log('its cpu 2s turn')
+                        if (this.action == 'remove') {
+                            this.cpuRemove("o")
+                        }
+                        console.log('placing...')
+                        this.cpuPlace("o")
+
+                        this.Player1Turn()
+                    }
+                    break;
+                }
+
+            default:
+                break;
+        }
+    }
+
+    cpuRemove = pieceType => {
+        let rng1 = this.cpuRng()
+        let rng2 = this.cpuRng()
+        console.log('in removal process')
+        while (this.board[rng1][rng2] != pieceType) {
+            rng1 = this.cpuRng()
+            rng2 = this.cpuRng()
+        }
+
+        setTimeout(() => {
+            document.getElementById(`ttt-cell-${rng1}${rng2}`).innerHTML = ""
+            this.board[rng1][rng2] = ""
+        }, 1000);
+        this.action = 'place'
+
+    }
+
+    cpuPlace = pieceType => {
+        let rng1 = this.cpuRng()
+        let rng2 = this.cpuRng()
+        console.log(`generated ${rng1} and ${rng2}`)
+        while (this.board[rng1][rng2] != "") {
+            rng1 = this.cpuRng()
+            rng2 = this.cpuRng()
+            console.log('in loop...')
+        }
+        setTimeout(() => {
+            this.board[rng1][rng2] = pieceType
+            document.getElementById(`ttt-cell-${rng1}${rng2}`).innerHTML = pieceType
+        }, 1000);
+        console.log("player 1s turn recieve")
+
+        this.turn++
+        console.log('running winner checks...')
+        this.CheckWinner(1)
+        this.CheckWinner(2)
+        this.Player1Turn()
+    }
+
+    cpuRng = () => {
+        return [Math.floor(Math.random() * (2 - 0 + 1) + 0)]
+    }
+
+
+
     isEven = num => num % 2 === 0;
 
     displayCurrentTurn = turnNum => {
@@ -101,6 +187,7 @@ class TicTacToeMatch {
 
 
     PlayerMove = cell => {
+        console.log(this.action + ' action is')
         switch (this.action) {
             case 'place':
                 if (this.EmptyCheck(cell) == 'empty') {
@@ -111,6 +198,7 @@ class TicTacToeMatch {
                         this.board[cell[0]][cell[1]] = "x"
                         document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("x")
                         this.turn++
+                        console.log('turn passed')
                         this.Player2Turn()
                     } else if (this.isEven(this.turn)) {
                         if (cell.toString() == this.replacingCell.toString()) {
