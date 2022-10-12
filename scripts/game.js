@@ -36,7 +36,6 @@ class TicTacToeMatch {
         }
         console.log(this.activePlayer)
         console.log(this.currentAction)
-        this.displayCurrentPlayerAction(this.activePlayer, this.currentAction)
     }
 
     CheckIf3 = playerNumber => {
@@ -92,7 +91,6 @@ class TicTacToeMatch {
         this.CheckWinner(1)
         this.displayCurrentTurn(this.turn)
         this.activePlayer = this.player2Name
-        this.displayCurrentPlayerAction(this.activePlayer, this.currentAction)
     }
     isEven = num => num % 2 === 0;
 
@@ -100,12 +98,7 @@ class TicTacToeMatch {
         document.getElementById("turn-counter").innerHTML = `It is turn ${turnNum}`
     }
 
-    displayCurrentPlayerAction = (currentPlayer, currentAction) => {
-        if (currentAction == 'remove') {
-            document.getElementById("active-player-do").innerHTML = `${currentPlayer}, ${currentAction} a piece, then place it in another new empty position`
-        }
-        document.getElementById("active-player-do").innerHTML = `${currentPlayer}, ${currentAction} a piece`
-    }
+
 
     PlayerMove = cell => {
         switch (this.action) {
@@ -171,6 +164,13 @@ const player2Name = playersSessionObject[1].playerName
 let activeGame = new TicTacToeMatch(player1, player2, player1Name, player2Name)
 
 activeGame.StartGame()
+
+let player1InfoTab = document.getElementById("player-1-info")
+player1InfoTab.innerHTML = `Player 1's name: ${activeGame.player1Name}`
+
+let player2InfoTab = document.getElementById("player-2-info")
+player2InfoTab.innerHTML = `Player 2's name: ${activeGame.player2Name}`
+
 
 // CELL CONTROLLING BUTTONS
 
