@@ -74,6 +74,7 @@ class TicTacToeMatch {
             }
         }
         else if (playerNum == 2) {
+            console.log("RUNNING CHECKS ON PLAYER 2 THE CPU")
             if ((this.board[0][0] + this.board[0][1] + this.board[0][2] === "ooo") ||
                 (this.board[1][0] + this.board[1][1] + this.board[1][2] === "ooo") ||
                 (this.board[2][0] + this.board[2][1] + this.board[2][2] === "ooo") ||
@@ -107,7 +108,7 @@ class TicTacToeMatch {
                             this.cpuRemove("x")
                         }
                         this.cpuPlace("x")
-                        CheckWinner(1)
+                        this.CheckWinner(1)
                         this.Player2Turn()
                     }
                     break;
@@ -122,7 +123,7 @@ class TicTacToeMatch {
                         }
                         console.log('placing...')
                         this.cpuPlace("o")
-
+                        this.CheckWinner(2)
                         this.Player1Turn()
                     }
                     break;
@@ -145,6 +146,7 @@ class TicTacToeMatch {
         setTimeout(() => {
             document.getElementById(`ttt-cell-${rng1}${rng2}`).innerHTML = ""
             this.board[rng1][rng2] = ""
+
         }, 1000);
         this.action = 'place'
 
@@ -162,6 +164,8 @@ class TicTacToeMatch {
         setTimeout(() => {
             this.board[rng1][rng2] = pieceType
             document.getElementById(`ttt-cell-${rng1}${rng2}`).innerHTML = pieceType
+            this.CheckWinner(1)
+            this.CheckWinner(2)
         }, 1000);
         console.log("player 1s turn recieve")
 

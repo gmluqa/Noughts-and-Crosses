@@ -7,5 +7,8 @@ if (winrar == null) {
     console.log(winrar + " is the winner")
 }
 
+let winningPlayer = document.getElementById("winning-player")
+
+winningPlayer.innerHTML = `${winrar} is the winner!`
 
 sessionStorage.removeItem("winner")
