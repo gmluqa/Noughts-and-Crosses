@@ -102,7 +102,8 @@ class TicTacToeMatch {
     ifCpuMove = (playerNum) => {
         switch (playerNum) {
             case 1:
-                if (this.isEven(this.turn)) {
+                if (this.isEven(this.turn) == false) {
+                    console.log('cpu time')
                     if (this.player1 == "cpu") {
                         if (this.action == 'remove') {
                             this.cpuRemove("x")
@@ -168,7 +169,6 @@ class TicTacToeMatch {
             this.CheckWinner(2)
         }, 1000);
         console.log("player 1s turn recieve")
-
         this.turn++
         console.log('running winner checks...')
         this.CheckWinner(1)
@@ -187,8 +187,6 @@ class TicTacToeMatch {
     displayCurrentTurn = turnNum => {
         document.getElementById("turn-counter").innerHTML = `It is turn ${turnNum}`
     }
-
-
 
     PlayerMove = cell => {
         console.log(this.action + ' action is')
