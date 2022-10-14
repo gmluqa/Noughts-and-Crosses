@@ -20,11 +20,7 @@ button {
   text-shadow: 0px 2px 10px #6272a4;
 }
 
-@media screen and (min-width: 1000px) {
-  a:hover {
-    color: #8be9fd;
-    transition: 0.5s;
-  }
+@media screen and (min-width: 200px) {
   a:focus {
     color: #8be9fd;
     transition: 500ms;
@@ -69,4 +65,9 @@ a:active {
   text-align: center;
   align-self: center;
   font-size: 175%;
+}
+
+a:hover {
+  color: #8be9fd;
+  transition: 0.5s;
 }
