@@ -42,21 +42,22 @@ button:hover:after {
   cursor: pointer;
 }
 
+@media screen and (min-width: 800px) {
+  a:hover {
+    color: #8be9fd;
+    transition: 0.5s;
+  }
+  a:focus {
+    color: #8be9fd;
+    transition: 500ms;
+  }
+}
+
 a,
 a:hover,
 a:focus,
 a:active {
   color: inherit;
-  transition: 500ms;
-}
-
-a:hover {
-  color: #8be9fd;
-  transition: 0.5s;
-}
-
-a:focus {
-  color: #8be9fd;
   transition: 500ms;
 }
 
