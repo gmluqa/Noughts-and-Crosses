@@ -20,54 +20,10 @@ button {
   text-shadow: 0px 2px 10px #6272a4;
 }
 
-@media screen and (min-width: 200px) {
-  a:focus {
-    color: #8be9fd;
-    transition: 500ms;
-  }
-  button:hover:after {
-    opacity: 1;
-    right: 10px;
-    cursor: pointer;
-  }
-  button:hover {
-    padding-right: 24px;
-    padding-left: 8px;
-    cursor: pointer;
-  }
-  button:hover {
-    padding-right: 24px;
-    padding-left: 8px;
-    cursor: pointer;
-  }
-  button:after {
-    content: "»";
-    position: absolute;
-    opacity: 0;
-    top: 14px;
-    right: -20px;
-    transition: 0.5s;
-    cursor: pointer;
-  }
-}
-
-a,
-a:hover,
-a:focus,
-a:active {
-  color: inherit;
-  transition: 500ms;
-}
-
 .main-text {
   grid-column: 2/3;
   grid-row: 2/3;
   text-align: center;
   align-self: center;
   font-size: 175%;
-}
-
-a:hover {
-  color: #8be9fd;
-  transition: 0.5s;
 }

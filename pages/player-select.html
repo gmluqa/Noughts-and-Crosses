@@ -11,20 +11,20 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./../css/player-select.css" />
     <link rel="stylesheet" href="./../css/global.css" />
+    <link rel="stylesheet" href="./../css/player-select.css" />
   </head>
   <body>
     <div class="header container">
       <div class="row header-text">
-        <p>Player Select</p>
+        <p><b> Player Select</b></p>
       </div>
     </div>
 
     <div class="main container d-grid">
       <form id="player-select-form">
         <div class="row row-player1">
-          <div class="col">
+          <div class="col p-0 m-0">
             Player 1
             <div class="form-check">
               <input
@@ -99,14 +99,17 @@
             placeholder="Player 2"
           />
         </div>
-
-        <button type="submit" id="start-button">START</button>
+        <div class="button-wrapper">
+          <button type="submit" id="start-button"><b> START</b></button>
+        </div>
       </form>
     </div>
 
     <div class="footer container">
       <div class="row footer-text">
-        <p>A project by <a href="https://github.com/gmluqa">gmluqa</a></p>
+        <p>
+          <b> A project by <a href="https://github.com/gmluqa">gmluqa</a></b>
+        </p>
       </div>
     </div>
     <script src="./../scripts/player-select.js"></script>

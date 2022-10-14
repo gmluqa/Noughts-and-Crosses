@@ -50,3 +50,45 @@ body {
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
+
+@media screen and (min-width: 00px) {
+  a:hover {
+    color: #8be9fd;
+    transition: 0.5s;
+  }
+  a:focus {
+    color: #8be9fd;
+    transition: 500ms;
+  }
+  button:hover:after {
+    opacity: 1;
+    right: 10px;
+    cursor: pointer;
+  }
+  button:hover {
+    padding-right: 24px;
+    padding-left: 8px;
+    cursor: pointer;
+  }
+  button:hover {
+    padding-right: 24px;
+    padding-left: 8px;
+    cursor: pointer;
+  }
+  button:after {
+    content: "»";
+    position: absolute;
+    opacity: 0;
+    top: 14px;
+    right: -20px;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+}
+
+a,
+a:focus,
+a:active {
+  color: inherit;
+  transition: 500ms;
+}
