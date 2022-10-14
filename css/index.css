@@ -20,29 +20,7 @@ button {
   text-shadow: 0px 2px 10px #6272a4;
 }
 
-button:after {
-  content: "»";
-  position: absolute;
-  opacity: 0;
-  top: 14px;
-  right: -20px;
-  transition: 0.5s;
-  cursor: pointer;
-}
-
-button:hover {
-  padding-right: 24px;
-  padding-left: 8px;
-  cursor: pointer;
-}
-
-button:hover:after {
-  opacity: 1;
-  right: 10px;
-  cursor: pointer;
-}
-
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1000px) {
   a:hover {
     color: #8be9fd;
     transition: 0.5s;
@@ -50,6 +28,30 @@ button:hover:after {
   a:focus {
     color: #8be9fd;
     transition: 500ms;
+  }
+  button:hover:after {
+    opacity: 1;
+    right: 10px;
+    cursor: pointer;
+  }
+  button:hover {
+    padding-right: 24px;
+    padding-left: 8px;
+    cursor: pointer;
+  }
+  button:hover {
+    padding-right: 24px;
+    padding-left: 8px;
+    cursor: pointer;
+  }
+  button:after {
+    content: "»";
+    position: absolute;
+    opacity: 0;
+    top: 14px;
+    right: -20px;
+    transition: 0.5s;
+    cursor: pointer;
   }
 }
 
