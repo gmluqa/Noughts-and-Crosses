@@ -27,3 +27,30 @@ button {
   align-self: center;
   font-size: 175%;
 }
+
+@media screen and (min-width: 00px) {
+  button:hover:after {
+    opacity: 1;
+    right: 10px;
+    cursor: pointer;
+  }
+  button:hover {
+    padding-right: 24px;
+    padding-left: 8px;
+    cursor: pointer;
+  }
+  button:hover {
+    padding-right: 24px;
+    padding-left: 8px;
+    cursor: pointer;
+  }
+  button:after {
+    content: "»";
+    position: absolute;
+    opacity: 0;
+    top: 14px;
+    right: -20px;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+}

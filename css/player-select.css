@@ -49,14 +49,6 @@ button {
 }
 
 @media screen and (min-width: 00px) {
-  a:hover {
-    color: #8be9fd;
-    transition: 0.5s;
-  }
-  a:focus {
-    color: #8be9fd;
-    transition: 500ms;
-  }
   button:hover:after {
     opacity: 1;
     right: 10px;
