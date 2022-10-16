@@ -15,15 +15,15 @@ class TicTacToeMatch {
         this.replacingCell = []
     }
 
-    StartGame = () => {
+    startGame = () => {
         this.turn++
-        this.Player1Turn()
+        this.player1Turn()
         this.displayCurrentTurn(this.turn)
     }
 
-    Player1Turn = () => {
-        this.CheckIf3(1)
-        this.CheckWinner(2)
+    player1Turn = () => {
+        this.checkIf3(1)
+        this.checkWinner(2)
         this.displayCurrentTurn(this.turn)
         this.activePlayer = this.player1Name
         if (this.turn == 1) {
@@ -32,7 +32,7 @@ class TicTacToeMatch {
         this.ifCpuMove(1)
     }
 
-    CheckIf3 = playerNumber => {
+    checkIf3 = playerNumber => {
         this.xCount = 0;
         this.oCount = 0;
         for (let i = 0; i < this.board.length; i++) {
@@ -51,7 +51,7 @@ class TicTacToeMatch {
         }
     }
 
-    CheckWinner = (playerNum) => {
+    checkWinner = (playerNum) => {
         if (playerNum == 1) {
             if ((this.board[0][0] + this.board[0][1] + this.board[0][2] === "xxx") ||
                 (this.board[1][0] + this.board[1][1] + this.board[1][2] === "xxx") ||
@@ -80,9 +80,9 @@ class TicTacToeMatch {
         }
     }
 
-    Player2Turn = () => {
-        this.CheckIf3(2)
-        this.CheckWinner(1)
+    player2Turn = () => {
+        this.checkIf3(2)
+        this.checkWinner(1)
         this.displayCurrentTurn(this.turn)
         this.activePlayer = this.player2Name
         this.ifCpuMove(2)
@@ -97,8 +97,8 @@ class TicTacToeMatch {
                             this.cpuRemove("x")
                         }
                         this.cpuPlace("x")
-                        this.CheckWinner(1)
-                        this.Player2Turn()
+                        this.checkWinner(1)
+                        this.player2Turn()
                     }
                     break;
                 }
@@ -109,8 +109,8 @@ class TicTacToeMatch {
                             this.cpuRemove("o")
                         }
                         this.cpuPlace("o")
-                        this.CheckWinner(2)
-                        this.Player1Turn()
+                        this.checkWinner(2)
+                        this.player1Turn()
                     }
                     break;
                 }
@@ -147,13 +147,13 @@ class TicTacToeMatch {
         setTimeout(() => {
             this.board[rng1][rng2] = pieceType
             document.getElementById(`ttt-cell-${rng1}${rng2}`).innerHTML = pieceType
-            this.CheckWinner(1)
-            this.CheckWinner(2)
+            this.checkWinner(1)
+            this.checkWinner(2)
         }, 1000);
         this.turn++
-        this.CheckWinner(1)
-        this.CheckWinner(2)
-        this.Player1Turn()
+        this.checkWinner(1)
+        this.checkWinner(2)
+        this.player1Turn()
     }
 
     cpuRng = () => {
@@ -168,10 +168,10 @@ class TicTacToeMatch {
         document.getElementById("turn-counter").innerHTML = `<b>It is turn ${turnNum}</b>`
     }
 
-    PlayerMove = cell => {
+    playerMove = cell => {
         switch (this.action) {
             case 'place':
-                if (this.EmptyCheck(cell) == 'empty') {
+                if (this.emptycheck(cell) == 'empty') {
                     if (!this.isEven(this.turn)) {
                         if (cell.toString() == this.replacingCell.toString()) {
                             return null;
@@ -179,7 +179,7 @@ class TicTacToeMatch {
                         this.board[cell[0]][cell[1]] = "x"
                         document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("x")
                         this.turn++
-                        this.Player2Turn()
+                        this.player2Turn()
                     } else if (this.isEven(this.turn)) {
                         if (cell.toString() == this.replacingCell.toString()) {
                             return null;
@@ -187,12 +187,12 @@ class TicTacToeMatch {
                         this.board[cell[0]][cell[1]] = "o"
                         document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("o")
                         this.turn++
-                        this.Player1Turn()
+                        this.player1Turn()
                     }
                 }
                 break;
             case 'remove':
-                if (this.EmptyCheck(cell) == 'occupied') {
+                if (this.emptycheck(cell) == 'occupied') {
                     if (!this.isEven(this.turn) && this.board[cell[0]][cell[1]] == "x") {
                         if (this.board[cell[0]][cell[1]] == "x") {
                             this.board[cell[0]][cell[1]] = ""
@@ -212,7 +212,7 @@ class TicTacToeMatch {
         }
     }
 
-    EmptyCheck = (cell) => {
+    emptycheck = (cell) => {
         if (this.board[cell[0]][cell[1]] == "") {
             return "empty"
         }
@@ -229,7 +229,7 @@ const player2Name = playersSessionObject[1].playerName
 
 let activeGame = new TicTacToeMatch(player1, player2, player1Name, player2Name)
 
-activeGame.StartGame()
+activeGame.startGame()
 
 let player1InfoTab = document.getElementById("player-1-info")
 player1InfoTab.innerHTML = ` <b> Player 1's name: ${activeGame.player1Name} </b>`
@@ -247,12 +247,12 @@ let cell20 = document.getElementById("ttt-cell-20")
 let cell21 = document.getElementById("ttt-cell-21")
 let cell22 = document.getElementById("ttt-cell-22")
 
-cell00.onclick = () => { activeGame.PlayerMove([0, 0]) }
-cell01.onclick = () => { activeGame.PlayerMove([0, 1]) }
-cell02.onclick = () => { activeGame.PlayerMove([0, 2]) }
-cell10.onclick = () => { activeGame.PlayerMove([1, 0]) }
-cell11.onclick = () => { activeGame.PlayerMove([1, 1]) }
-cell12.onclick = () => { activeGame.PlayerMove([1, 2]) }
-cell20.onclick = () => { activeGame.PlayerMove([2, 0]) }
-cell21.onclick = () => { activeGame.PlayerMove([2, 1]) }
-cell22.onclick = () => { activeGame.PlayerMove([2, 2]) }
+cell00.onclick = () => { activeGame.playerMove([0, 0]) }
+cell01.onclick = () => { activeGame.playerMove([0, 1]) }
+cell02.onclick = () => { activeGame.playerMove([0, 2]) }
+cell10.onclick = () => { activeGame.playerMove([1, 0]) }
+cell11.onclick = () => { activeGame.playerMove([1, 1]) }
+cell12.onclick = () => { activeGame.playerMove([1, 2]) }
+cell20.onclick = () => { activeGame.playerMove([2, 0]) }
+cell21.onclick = () => { activeGame.playerMove([2, 1]) }
+cell22.onclick = () => { activeGame.playerMove([2, 2]) }
