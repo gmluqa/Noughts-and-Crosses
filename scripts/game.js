@@ -185,7 +185,7 @@ class TicTacToeMatch {
     isEven = num => num % 2 === 0;
 
     displayCurrentTurn = turnNum => {
-        document.getElementById("turn-counter").innerHTML = `It is turn ${turnNum}`
+        document.getElementById("turn-counter").innerHTML = `<b>It is turn ${turnNum}</b>`
     }
 
     PlayerMove = cell => {
@@ -256,10 +256,10 @@ let activeGame = new TicTacToeMatch(player1, player2, player1Name, player2Name)
 activeGame.StartGame()
 
 let player1InfoTab = document.getElementById("player-1-info")
-player1InfoTab.innerHTML = `Player 1's name: ${activeGame.player1Name}`
+player1InfoTab.innerHTML = ` <b> Player 1's name: ${activeGame.player1Name} </b>`
 
 let player2InfoTab = document.getElementById("player-2-info")
-player2InfoTab.innerHTML = `Player 2's name: ${activeGame.player2Name}`
+player2InfoTab.innerHTML = `<b> Player 2's name: ${activeGame.player2Name} </b>`
 
 
 // CELL CONTROLLING BUTTONS

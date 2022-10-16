@@ -4,9 +4,9 @@ console.log(winrar)
 let winningPlayer = document.getElementById("winning-player")
 
 if (winrar == null) {
-    winningPlayer.innerHTML = `Please start <a href=./../index.html>again!</a>`
+    winningPlayer.innerHTML = `<b>Please start <a href=./../index.html>again!</a></b>`
 } else {
-    winningPlayer.innerHTML = `${winrar} is the winner!`
+    winningPlayer.innerHTML = `<b>${winrar} is the winner! Start <a href=./../index.html>again?</a>   </b> `
 }
 
 
