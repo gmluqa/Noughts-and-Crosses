@@ -1,10 +1,5 @@
 let playersSessionObject = JSON.parse(sessionStorage.getItem("activePlayersPayload"))
 
-
-// DEFINING CLASS THAT WILL BE ABLE TO UTILIZE THE JSON AS INPUT PARAMS
-
-// example {player: 'cpu', playerName: 'Player 1'}, {player: 'cpu', playerName: 'Player 2'} 
-
 class TicTacToeMatch {
     constructor(player1, player2, player1Name, player2Name) {
         this.player1 = player1
@@ -27,7 +22,6 @@ class TicTacToeMatch {
     }
 
     Player1Turn = () => {
-        console.log('player 1 turn')
         this.CheckIf3(1)
         this.CheckWinner(2)
         this.displayCurrentTurn(this.turn)
@@ -36,8 +30,6 @@ class TicTacToeMatch {
             this.currentAction = 'place'
         }
         this.ifCpuMove(1)
-        console.log(this.activePlayer)
-        console.log(this.currentAction)
     }
 
     CheckIf3 = playerNumber => {
@@ -74,7 +66,6 @@ class TicTacToeMatch {
             }
         }
         else if (playerNum == 2) {
-            console.log("RUNNING CHECKS ON PLAYER 2 THE CPU")
             if ((this.board[0][0] + this.board[0][1] + this.board[0][2] === "ooo") ||
                 (this.board[1][0] + this.board[1][1] + this.board[1][2] === "ooo") ||
                 (this.board[2][0] + this.board[2][1] + this.board[2][2] === "ooo") ||
@@ -93,9 +84,7 @@ class TicTacToeMatch {
         this.CheckIf3(2)
         this.CheckWinner(1)
         this.displayCurrentTurn(this.turn)
-        console.log('PLAYER 2 TURN')
         this.activePlayer = this.player2Name
-        console.log(this.activePlayer + "!!!111")
         this.ifCpuMove(2)
     }
 
@@ -103,7 +92,6 @@ class TicTacToeMatch {
         switch (playerNum) {
             case 1:
                 if (this.isEven(this.turn) == false) {
-                    console.log('cpu time')
                     if (this.player1 == "cpu") {
                         if (this.action == 'remove') {
                             this.cpuRemove("x")
@@ -116,13 +104,10 @@ class TicTacToeMatch {
                 }
             case 2:
                 if (this.isEven(this.turn)) {
-                    console.log('turn is even!')
                     if (this.player2 == "cpu") {
-                        console.log('its cpu 2s turn')
                         if (this.action == 'remove') {
                             this.cpuRemove("o")
                         }
-                        console.log('placing...')
                         this.cpuPlace("o")
                         this.CheckWinner(2)
                         this.Player1Turn()
@@ -138,7 +123,6 @@ class TicTacToeMatch {
     cpuRemove = pieceType => {
         let rng1 = this.cpuRng()
         let rng2 = this.cpuRng()
-        console.log('in removal process')
         while (this.board[rng1][rng2] != pieceType) {
             rng1 = this.cpuRng()
             rng2 = this.cpuRng()
@@ -156,11 +140,9 @@ class TicTacToeMatch {
     cpuPlace = pieceType => {
         let rng1 = this.cpuRng()
         let rng2 = this.cpuRng()
-        console.log(`generated ${rng1} and ${rng2}`)
         while (this.board[rng1][rng2] != "") {
             rng1 = this.cpuRng()
             rng2 = this.cpuRng()
-            console.log('in loop...')
         }
         setTimeout(() => {
             this.board[rng1][rng2] = pieceType
@@ -168,9 +150,7 @@ class TicTacToeMatch {
             this.CheckWinner(1)
             this.CheckWinner(2)
         }, 1000);
-        console.log("player 1s turn recieve")
         this.turn++
-        console.log('running winner checks...')
         this.CheckWinner(1)
         this.CheckWinner(2)
         this.Player1Turn()
@@ -189,7 +169,6 @@ class TicTacToeMatch {
     }
 
     PlayerMove = cell => {
-        console.log(this.action + ' action is')
         switch (this.action) {
             case 'place':
                 if (this.EmptyCheck(cell) == 'empty') {
@@ -200,7 +179,6 @@ class TicTacToeMatch {
                         this.board[cell[0]][cell[1]] = "x"
                         document.getElementById(`ttt-cell-${cell[0]}${cell[1]}`).innerHTML = ("x")
                         this.turn++
-                        console.log('turn passed')
                         this.Player2Turn()
                     } else if (this.isEven(this.turn)) {
                         if (cell.toString() == this.replacingCell.toString()) {
@@ -244,8 +222,6 @@ class TicTacToeMatch {
     }
 }
 
-// ASIGNING PLAYER VARS, INITIATE NEW GAME WITH THOSE VARS
-
 const player1 = playersSessionObject[0].player
 const player2 = playersSessionObject[1].player
 const player1Name = playersSessionObject[0].playerName
@@ -260,9 +236,6 @@ player1InfoTab.innerHTML = ` <b> Player 1's name: ${activeGame.player1Name} </b>
 
 let player2InfoTab = document.getElementById("player-2-info")
 player2InfoTab.innerHTML = `<b> Player 2's name: ${activeGame.player2Name} </b>`
-
-
-// CELL CONTROLLING BUTTONS
 
 let cell00 = document.getElementById("ttt-cell-00")
 let cell01 = document.getElementById("ttt-cell-01")

@@ -14,14 +14,11 @@ playerSelectForm.addEventListener('submit', function (event) {
     CheckEmptyNamesAndReplace(activePlayersPayload)
 
     sessionStorage.setItem("activePlayersPayload", JSON.stringify(activePlayersPayload))
-    console.log(activePlayersPayload)
 
 
 
     window.location.href = "./game.html"
 })
-
-// This function asigns player 1 and player 2 as default names
 
 const CheckEmptyNamesAndReplace = (activePlayersPayload) => {
     for (let i = 0; i < activePlayersPayload.length; i++) {
